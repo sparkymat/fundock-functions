@@ -26,3 +26,11 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: sparkymat/fd-format-json:latest
+      - name: Build and push s3-ls
+        id: docker_build
+        uses: docker/build-push-action@v3
+        with:
+          context: "{{defaultContext}}:s3-ls"
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: sparkymat/fd-s3-ls:latest
