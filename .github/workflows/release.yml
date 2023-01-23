@@ -19,7 +19,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push format-json
-        id: docker_build
+        id: docker_build_format_json
         uses: docker/build-push-action@v3
         with:
           context: "{{defaultContext}}:format-json"
@@ -27,7 +27,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           tags: sparkymat/fd-format-json:latest
       - name: Build and push s3-ls
-        id: docker_build
+        id: docker_build_s3_ls
         uses: docker/build-push-action@v3
         with:
           context: "{{defaultContext}}:s3-ls"
