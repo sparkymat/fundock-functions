@@ -1,5 +1,6 @@
 import { ApiFactory } from "https://deno.land/x/aws_api@v0.7.0/client/mod.ts";
 import { S3 } from "https://aws-api.deno.dev/v0.3/services/s3.ts";
+import formatJSON from "npm:format-json@1.0.3";
 
 const region = Deno.env.get("AWS_REGION") || "";
 const awsAccessKeyId = Deno.env.get("AWS_ACCESS_KEY_ID") || "";
@@ -22,7 +23,7 @@ s3.listBuckets()
     const output = {
       buckets: (data.Buckets || []).map((b) => b.Name),
     };
-    console.log(JSON.stringify(output));
+    console.log(formatJSON.plain(output));
   })
   .catch((err) => {
     const output = { error: err };
